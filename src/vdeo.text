@@ -1,0 +1,683 @@
+video-1
+----------------------
+
+<script setup>
+const bgOrange="bg-orange-400"
+const bgindigo="bg-indigo-400"
+const bggreen="bg-green-400"
+
+const weekday = true
+
+const colors = {
+  
+}
+</script>
+
+<template>
+
+<section class="container mx-a">
+  <h1 class="text-center text-3xl py-12">Class & Style Binding</h1>
+
+  <section class="flex space-x-10">
+    <div class="w-1/3 h-16" :class="bgOrange"></div>
+    <div class="w-1/3 bg-indigo-400 h-16"></div>
+    <div class="w-1/3 bg-green-400 h-16"></div>
+  </section>
+</section>
+
+<section class="mt-10">
+
+  <div class=" h-16 flex items-center justify-center" :class="[weekday?'bg-red-400':'bg-green-300',weekday?'text-white':'text-orange-800']">This Is the Vue js</div>
+
+</section>
+</template>
+
+<style scoped>
+</style>
+
+----------------------
+
+
+
+
+video-2
+--------
+<script setup>
+const tasks = [
+  "complete project prosal",
+  "Update website content",
+  "fix bg in user authentication",
+  "Test new feature implementation",
+  "Test new feature implementation"
+]
+</script>
+
+<template>
+<section class="container mt-[300px]">
+
+    <div v-for="(task,index) in tasks"  class=" bg-blue-400 text-center " :key="task">{{ index+1 }}. {{ task }}</div>
+  
+</section>
+</template>
+
+<style scoped>
+</style>
+----------------------
+
+
+
+
+video-3
+--------
+<script setup>
+import { ref } from 'vue';
+
+const tasks = [
+  { id: 1, title: ref("Complete project proposal"), status: "In Progress" },
+  { id: 2, title: "Update Website content", status: "Completed" },
+  { id: 3, title: "Fix bug in user Authentication", status: "In Progress" },
+  { id: 4, title: "Prepare presentation slides", status: "Pending" },
+  { id: 5, title: "Test new feature implementation", status: "In Progress" },
+];
+
+const taskTitle = ref(tasks[0].title);
+</script>
+
+<template>
+  <section class="container mt-16">
+    <label for="editTasks">Edit 1st</label>
+    <input type="text" id="reftask" v-model="taskTitle">
+    <section class="flex flex-col items-center justify-center gap-6">
+      <div
+        v-for="task in tasks"
+        :key="task.id"
+        class="border-2 border-blue-500 p-6 w-64 text-center rounded-lg shadow-lg hover:bg-blue-100 cursor-pointer"
+      >
+        <p class="font-semibold text-xl">{{ task.id }}. {{ task.title }}</p>
+        <p class="text-sm text-gray-500">{{ task.status }}</p>
+      </div>
+    </section>
+  </section>
+</template>
+
+<style scoped>
+</style>
+
+----------------------
+
+
+
+
+video-4
+--------
+<script setup>
+const persons = [
+  {
+    id:1,
+    name:"Jane Doe",
+    jobTitle:"Full stack Web Developer",
+    profilePhoto:"https://images.unsplash.com/photo-1579038773867-044c48829161?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fFdlYiUyMGRldmVsb3BlciUyMG1hbnxlbnwwfHwwfHx8MA%3D%3D"
+    
+  },
+  {
+    id:2,
+    name:"Jhon Doe",
+    jobTitle:"Font-End Web Developer",
+    profilePhoto:"https://images.unsplash.com/photo-1557862921-37829c790f19?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fFdlYiUyMGRldmVsb3BlciUyMG1hbnxlbnwwfHwwfHx8MA%3D%3D"    
+  },
+  {
+    id:3,
+    name:"Harsh Doe",
+    jobTitle:"CEO-Founder",
+    profilePhoto:"https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFdlYiUyMGRldmVsb3BlciUyMG1hbnxlbnwwfHwwfHx8MA%3D%3D"    
+  }
+]
+</script>
+
+<template>
+<section class="container mt-10 mx-auto bg-gray-400">
+  <div class="mb-16 text-center">
+    <h2 class="mb-4 text-center  text-gray-900 font-bold text text-4xl">Theam Member </h2>
+    <p class="tex--gray-600 w-8/12 mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam ipsum quod assumenda voluptates ea itaque quos quaerat nobis. Optio voluptate laboriosam odit, deleniti numquam distinctio iure voluptatem deserunt eos natus.</p>
+  </div>
+
+  <div  class="grid gap-12 items-center grid-cols-3">
+  <div v-for="person in persons"  class="space-y-4 text-center" :key="person.id">
+    <img :class="2==person.id?'h-80':'h-64'" class="w-64  mx-auto object-cover rounded-xl "  :src=" person.profilePhoto " alt="Jane Doe">
+    <div>
+      <h4 class="text-2xl">{{ person.name }}</h4>
+      <span class="block text-sm text-gray-500"> {{ person.jobTitle }}</span>
+    </div>
+  </div>
+  
+</div>
+
+</section>
+</template>
+
+<style scoped>
+</style>
+----------------------
+
+
+
+
+video-5
+--------
+<script setup>
+
+const icons =[
+  {titile:"Sunny",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx8budz2meppCzsO65vQU9AJgFAb2p4h5pbg&s"},
+  {titile:"Paratly Clouldy",icon:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfktAKFUFUVk9QlMTZbo0grBMdcuwf1rbc0Q&s"},
+  {titile:"Rainy",icon:"https://cdn.vectorstock.com/i/500p/44/09/cartoon-rainy-cloud-weather-character-with-rain-vector-48674409.jpg "},
+  {titile:"Thunderstrom",icon:"https://atlas-content-cdn.pixelsquid.com/stock-images/weather-forecast-thunderstorm-storm-N4M7XQA-600.jpg"}
+]
+</script>
+
+<template>
+<section class="mx-auto container"> 
+  <section class="mx-auto mt-[100px] container space-y-3 p-5 border border-gray-800 w-80 flex flex-col items-center">
+    <template v-for="icon in icons" :key="icon.icon">
+    <h2 class="text-2xl">{{ icon.titile }}</h2>
+    <img :src="icon.icon" :alt="icon.titile" class="w-32">
+   
+</template>
+  </section>
+</section>
+</template>
+
+<style scoped>
+</style>
+----------------------
+
+
+
+
+video-6
+--------
+<script setup>
+import { ref, reactive} from 'vue';
+
+// const location = ref("Dhaka")
+
+// const changrlocation=(newLocation)=>{
+//  location.value = newLocation
+// }
+
+const location = reactive({
+  name:"Dhaka",
+  weather:"Sunny",
+  temperature:"20*"
+})
+
+function changelocation(newLocation,newWeather,newTemperature){
+location.name = newLocation
+location.weather=newWeather
+location.temperature=newTemperature
+}
+</script>
+
+<template>
+<section class="container mx-auto flex items-center flex-col">
+  <h1 class="text-center text-2xl py-10">Event &Reactivity In Vue.js</h1>
+
+  <div class="container mx-auto flex space-x-5 justify-center m-5">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="changelocation('Dhaka','Sunny','20*')">
+      Dhaka
+    </button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="changelocation('Nakla','Rainy','10*')">
+      Nakla
+    </button>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="changelocation('Khulna','Thanderstrom','20*')">
+      Khulna
+    </button>
+  </div>
+
+  <h1 class=" text-2xl m-10" > Current Location is {{ location.name }} </h1>
+  <h1 class=" text-2xl " >  Weather is {{ location.weather }} </h1>
+  <h1 class=" text-2xl " >  Temperature is {{ location.temperature }} </h1>
+</section>
+</template>
+
+<style scoped>
+</style>
+----------------------
+
+
+
+
+video-7
+--------
+<script setup>
+import { ref } from 'vue';
+
+const accordingIndex = ref(null); // Initialize with null
+</script>
+
+<template>
+  <section class="container mx-auto justify-center bg-blue-300">
+    <h1 class="text-center text-white">Event & Reactivity in Vue.js</h1>
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 my-10">
+      <h2 class="text-2xl font-semibold text-center mb-6">Accordion Example</h2>
+
+      <!-- Accordion Item 1 -->
+      <div class="border-b">
+        <button 
+          @click="accordingIndex === 0 ? accordingIndex = null : accordingIndex = 0"
+          class="w-full flex items-center justify-between px-4 py-3 text-lg font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-t-md">
+          <span>What is term?</span>
+          <span class="text-green-500 font-bold text-xl">+</span>
+        </button>
+        <div class="px-4 py-3 text-gray-600" v-show="accordingIndex==0">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, assumenda?</p>
+        </div>
+      </div>
+
+      <!-- Accordion Item 2 -->
+      <div class="border-b">
+        <button 
+          @click="accordingIndex === 1 ? accordingIndex = null : accordingIndex = 1"
+          class="w-full flex items-center justify-between px-4 py-3 text-lg font-medium text-gray-700 bg-gray-100 hover:bg-gray-200">
+          <span>When to use Accordion Components?</span>
+          <span class="text-green-500 font-bold text-xl">+</span>
+        </button>
+        <div class="px-4 py-3 text-gray-600" v-show="accordingIndex==1">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, doloremque.</p>
+        </div>
+      </div>
+
+      <!-- Accordion Item 3 -->
+      <div>
+        <button 
+          @click="accordingIndex === 2 ? accordingIndex = null : accordingIndex = 2"
+          class="w-full flex items-center justify-between px-4 py-3 text-lg font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-b-md">
+          <span>How can it be defined?</span>
+          <span class="text-green-500 font-bold text-xl">+</span>
+        </button>
+        <div class="px-4 py-3 text-gray-600" v-show="accordingIndex==2">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem!</p>
+        </div>
+      </div>
+    </div>
+    <h1 class="text-center text-white">........</h1>
+  </section>
+</template>
+
+<style scoped>
+</style>
+----------------------
+
+
+
+
+video-8
+--------
+<script setup>
+import { ref,reactive } from 'vue';
+const according=reactive([
+  false,false,false
+])
+
+function ToggleEvent(index){
+  according[index]= !according[index]
+}
+
+</script>
+
+<template>
+  <section class="container mx-auto justify-center bg-blue-300">
+    <h1 class="text-center text-white">Event & Reactivity in Vue.js</h1>
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 my-10">
+      <h2 class="text-2xl font-semibold text-center mb-6">Accordion Example</h2>
+
+      <!-- Accordion Item 1 -->
+      <div class="border-b">
+        <button 
+          @click="ToggleEvent(0)"
+          class="w-full flex items-center justify-between px-4 py-3 text-lg font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-t-md">
+          <span>What is term?</span>
+          <span class="text-green-500 font-bold text-xl">+</span>
+        </button>
+        <div class="px-4 py-3 text-gray-600" v-show="according[0]">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, assumenda?</p>
+        </div>
+      </div>
+
+      <!-- Accordion Item 2 -->
+      <div class="border-b">
+        <button 
+          @click="ToggleEvent(1)"
+          class="w-full flex items-center justify-between px-4 py-3 text-lg font-medium text-gray-700 bg-gray-100 hover:bg-gray-200">
+          <span>When to use Accordion Components?</span>
+          <span class="text-green-500 font-bold text-xl">+</span>
+        </button>
+        <div class="px-4 py-3 text-gray-600" v-show="according[1]">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, doloremque.</p>
+        </div>
+      </div>
+
+      <!-- Accordion Item 3 -->
+      <div>
+        <button 
+          @click="ToggleEvent(2)"
+          class="w-full flex items-center justify-between px-4 py-3 text-lg font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-b-md">
+          <span>How can it be defined?</span>
+          <span class="text-green-500 font-bold text-xl">+</span>
+        </button>
+        <div class="px-4 py-3 text-gray-600" v-show="according[2]">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem!</p>
+        </div>
+      </div>
+    </div>
+    <h1 class="text-center text-white">........</h1>
+  </section>
+</template>
+
+<style scoped>
+</style>
+----------------------
+
+
+
+
+video-9
+--------
+<script setup>
+import { reactive, ref } from 'vue';
+
+const activeIndex =ref(0)
+
+const accordions=reactive([
+{
+  heading:"What is term?",
+  content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, assumenda?",
+  isOpen:false
+},
+{
+  heading:"When to use Accordion Components?",
+  content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, doloremque.",
+  isOpen:false
+},
+{
+  heading:"How can it be defined?",
+  content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem!",
+  isOpen:false
+},
+])
+
+
+</script>
+
+<template>
+  <section class="container mx-auto justify-center bg-blue-300">
+    <h1 class="text-center text-white">Event & Reactivity in Vue.js</h1>
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 my-10">
+      <h2 class="text-2xl font-semibold text-center mb-6">Accordion Example</h2>
+
+      <!-- Accordion Item 1 -->
+      <div class="border-b" v-for="(accordion,index) in accordions" :key="index">
+        <button 
+         @click="accordion.isOpen=!accordion.isOpen"
+          class="w-full flex items-center justify-between px-4 py-3 text-lg font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-t-md">
+          <span>{{ accordion.heading }}</span>
+          <span class="text-green-500 font-bold text-xl">+</span>
+        </button>
+        <div class="px-4 py-3 text-gray-600" v-show="accordion.isOpen">
+          <p>{{ accordion.content }}</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 my-10">
+      <h2 class="text-2xl font-semibold text-center mb-6">Accordion Example</h2>
+
+      <!-- Accordion Item 1 -->
+      <div class="border-b" v-for="(accordion,index) in accordions" :key="index">
+        <button 
+         @click="activeIndex= index"
+          class="w-full flex items-center justify-between px-4 py-3 text-lg font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-t-md">
+          <span>{{ accordion.heading }}</span>
+          <span class="text-green-500 font-bold text-xl">+</span>
+        </button>
+        <div class="px-4 py-3 text-gray-600" v-show="index == activeIndex">
+          <p>{{ accordion.content }}</p>
+        </div>
+      </div>
+
+    </div>
+    <h1 class="text-center text-white">........</h1>
+  </section>
+</template>
+
+<style scoped>
+</style>
+
+----------------------
+
+
+
+
+video-10
+--------
+<script setup>
+import { reactive, ref } from 'vue';
+const fullImage = ref('https://images.unsplash.com/photo-1732494644033-fedc311f0442?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+
+const images =[
+  {
+    thumb:"https://images.unsplash.com/photo-1732494644033-fedc311f0442?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    full:"https://images.unsplash.com/photo-1732494644033-fedc311f0442?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    thumb:"https://images.unsplash.com/photo-1715552508844-1053315707d5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    full:"https://images.unsplash.com/photo-1715552508844-1053315707d5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    thumb:"https://plus.unsplash.com/premium_photo-1673483585922-f2e747e7bedc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    full:"https://plus.unsplash.com/premium_photo-1673483585922-f2e747e7bedc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    thumb:"https://images.unsplash.com/photo-1642616052835-25c5f8186a2a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    full:"https://images.unsplash.com/photo-1642616052835-25c5f8186a2a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }
+]
+
+function changeImage(image){
+  fullImage.value = image.full
+}
+</script>
+
+<template>
+
+  <section class=" container mx-auto flex items-center flex-col">
+    <h1 class="text-center text-2xl py-10">Events & Reactibty</h1>
+    <div>
+      <div class="flex space-x-2 gap-5">
+        <img @click="changeImage(image)" v-for="image in images" :key="image.thumb" class=" cursor-pointer w-60 h-60" :src="image.thumb" alt="">
+
+      </div>
+      <div class="mt-10">
+        <img class="cursor-pointer w-full" :src="fullImage" >
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped></style>
+
+
+
+
+----------------------
+
+
+
+
+video-11
+--------
+<script setup>
+import { ref } from 'vue';
+
+const about = ref("Hello Bangladesh")
+const name = ref(null)
+const links = [
+  {
+    name: "Google",
+    url: " https://www.google.com",
+    about: "Google, a subsidiary of Alphabet Inc., is a multinational technology company renowned for its internet-related services and products"
+  },
+  {
+    name: "Youtube",
+    url: "https://www.youtube.com",
+    about: "YouTube, launched in 2005, is the world's largest video-sharing platform and a subsidiary of Google. Created by Steve Chen, Chad Hurley, and Jawed Karim, it allows users to upload, share, and view videos"
+  },
+  {
+    name: "X(formerly Twitter)",
+    url: "https://www.youtube.com",
+    about: "X, previously known as Twitter, is a social media platform that focuses on short-form content sharing."
+  },
+]
+
+function aboutShow(link){
+  about.value = link.about
+  name.value = link.name
+}
+
+</script>
+
+<template>
+  <section class=" container mx-auto flex items-center flex-col">
+    <h1 class="text-center text-2xl py-10">Event & Reactivity in vue js</h1>
+    <div class="p-4 bg-white shadow-md rounded-lg">
+    <h2 class="text-xl font-bold text-blue-600">{{ name }}</h2>
+    <p class="text-gray-700 mt-2">
+      {{ about }}
+    </p>
+  
+  </div>
+    <div class="container mx-auto flex space-x-5 justify-center m-[1000px]">
+      <a @click.prevent="aboutShow(link)" v-for="link in links" :key="link.name" href="#">{{ link.name }}</a>
+    </div>
+  </section>
+</template>
+
+<style scoped></style>
+----------------------
+
+
+
+
+video-12
+--------
+<script setup>
+import { ref } from 'vue';
+
+const message = ref("Hello World");
+const wordMessage = ref('')
+const space = ref(0);
+
+function spacePressed() {
+
+  space.value++
+  message.value = "Space pressed" + space.value + "time"
+
+
+}
+
+function whatKey(event) {
+  wordMessage.value = " " + event.key
+}
+
+function pressedButton() {
+  message.value = "You click The Button"
+}
+function ctrlRightClick() {
+  message.value = "Ctrl+Right Click"
+}
+
+function divClicked() {
+  alert("Hello Div")
+}
+
+function buttonClicked() {
+  alert("Hello Button")
+}
+</script>
+
+<template>
+  <section class="container mx-auto flex flex-col items-center">
+    <h1 class=" text-center text-2xl py-10">Events & Reactivity in Vue.Js</h1>
+    <h2 class="mt-10">{{ message }}</h2>
+    <h2 class="mt-10 text-4xl">{{ wordMessage }}</h2>
+    <form @submit.prevent action="https://www.google.com/search">
+      <div class="container mx-auto flex space-x-5 justify-center m-5">
+        <input type="text" @keyup.space="spacePressed()" name="q" class="border border-gray-500 bg-white p-5"
+          placeholder="Press Space">
+      </div>
+      <div class="container mx-auto flex space-x-5 justify-center m-5">
+        <input @keyup="whatKey($event)" type="text" name="q" class="border border-gray-500 bg-white p-5"
+          placeholder="Type Something">
+      </div>
+
+      <button @click.prevent="pressedButton()"
+        class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mr-2">Button</button>
+
+      <button @click.ctrl.right="ctrlRightClick()"
+        class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">Ctrl + Right Click</button>
+    </form>
+    <div @click="divClicked()" class="bg-gray-200 w-[500px] h-80 mt-5 flex items-center justify-center">
+      <button @click.stop="buttonClicked()"
+        class="bg-orange-500 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded">Button</button>
+    </div>
+  </section>
+</template>
+
+<style scoped></style>
+----------------------
+
+
+
+
+video-12
+--------
+<script setup>
+import { ref,onBeforeMount,onMounted,onUpdated, onUnmounted } from 'vue';
+
+const status = ref([])
+const apiResponse = ref(null)
+onBeforeMount(()=>{
+  console.log("before Mount")
+  status.value.push('before Mount')
+
+
+  fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => {
+        apiResponse.value = json;
+      })
+})
+
+onMounted(()=>{
+  console.log('mounted');
+  status.value.push('mounted');
+})
+</script>
+
+<template>
+<section class=" mx-auto container">
+  <h1 class=" my-5">Lifecykel Hooks</h1>
+  <div class=" flex justify-center mt-20">
+    <div class=" w-1/2">
+      <img src="https://vuejs.org/assets/lifecycle.MuZLBFAS.png" alt="">
+    </div>
+    <div class=" text-2xl w-1/2">
+      {{ status }}
+
+    </div>
+   <p class="mt-10">{{ apiResponse }}</p>
+  </div>
+</section>
+</template>
+
+<style scoped>
+</style>
